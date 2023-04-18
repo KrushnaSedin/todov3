@@ -31,5 +31,26 @@ export class AuthenticatedRequest {
 
     }
 
+    async patch<T>(url: string, body: T) {
+        return await this.request.patch(url, {
+            data: body,
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${this.token}`
+            }
+        })
+    }
+
+    async put<T>(url: string, body: T) {
+        return await this.request.put(url, {
+            data: body,
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${this.token}`
+            }
+        })
+    }
+
+
 
 }
