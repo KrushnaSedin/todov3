@@ -7,12 +7,14 @@ test.describe("Create Request Positive scenario", () => {
     const resp = await authenticatedRequest.post(BASE_URL + TODO_RESOURCE, { title: "Bring Milk" })
     const body = await resp.json()
     expect(resp.status()).toBe(201)
+    expect(body.title).toBe("Bring Milk")
     testInfo['id'] = body.id
   });
   test("Creation of todo should work when passed status field", async ({ authenticatedRequest },testInfo) => {
     const resp = await authenticatedRequest.post(BASE_URL + TODO_RESOURCE, { title: "Bring Milk", status: "DONE" })
     const body = await resp.json()
     expect(resp.status()).toBe(201)
+    expect(body.title).toBe("Bring Milk")
     expect(body.status).toBe("DONE")
     testInfo['id'] = body.id
   })

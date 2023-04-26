@@ -22,6 +22,7 @@ test.describe("Get Request positive scenario", () => {
         const body = await resp.json()
         expect(resp.status()).toBe(200)
         expect(body.id).toBe(id)
+        expect(body.title).toBe("Delete Todo data")
         expect(body.status).toBe('ACTIVE')
         expect(body).not.toBe(null)
     })

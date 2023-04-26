@@ -19,6 +19,7 @@ test.describe("Patch request ", () => {
         const resp = await authenticatedRequest.patch(`${BASE_URL}${TODO_RESOURCE}/${id}`, { title: 'Bring Tiger' })
         const body = await resp.json()
         expect(resp.status()).toBe(200)
+        expect(body.title).toBe("Bring Tiger")
         expect(body.title).not.toBe(null)
         expect(body.id).toBe(id)
     })
@@ -49,6 +50,7 @@ test.describe("Patch request ", () => {
         const body = await resp.json()
         expect(resp.status()).toBe(200)
         expect(body.title).not.toBe(null)
+        expect(body.title).toBe("Hello World")
         expect(body.status).toBe('DONE')
         expect(body.id).toBe(id)
 
@@ -59,8 +61,6 @@ test.describe("Patch request ", () => {
         const resp = await authenticatedRequest.patch(`${BASE_URL}${TODO_RESOURCE}/${id}`, { title: 'Hello Sedin', status: 'INACTIVE' })
         const body = await resp.json()
         expect(resp.status()).toBe(400)
-        expect(body.title).not.toBe(null)
-        expect(body.status).not.toBe('DONE')
 
     })
 
@@ -135,6 +135,7 @@ test.describe("Put request",()=>{
         const body= await resp.json()
         expect(resp.status()).toBe(200)
         expect(body.title).not.toBe(null)
+        expect(body.title).toBe("Hello World")
         expect(body.status).toBe('DONE')
         expect(body.id).toBe(id)
         
@@ -144,9 +145,7 @@ test.describe("Put request",()=>{
         const resp= await authenticatedRequest.put(`${BASE_URL}${TODO_RESOURCE}/${id}`,{title:'Hello Sedin',status:'INACTIVE'})
         const body= await resp.json()
         expect(resp.status()).toBe(400)
-        expect(body.title).not.toBe(null)
-        expect(body.status).not.toBe('DONE')
-        
+       
     })
 
     test("Updation of only title should give 400 in put", async ({authenticatedRequest},testInfo)=>{
