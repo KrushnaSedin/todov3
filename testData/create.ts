@@ -1,12 +1,12 @@
-import { createUser, deleteUser, login } from "./user"
+import { createConfigUser, createUser, deleteUser, login, loginWithConfigUser } from "./user"
 
 (async () => {
     try {
-        const token = await login()
+        const token = await loginWithConfigUser()
         await deleteUser(token)
     }
     catch (e) {
         console.log("This is OK")
     }
-    await createUser()
+    await createConfigUser()
 })()

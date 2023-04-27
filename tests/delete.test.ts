@@ -1,7 +1,7 @@
 import { expect, request } from '@playwright/test';
 import { test } from '../fixtures/user.fixture'
 import { BASE_URL, TODO_RESOURCE } from '../config';
-import { createNewUser, createUser, deleteUser, newLogin } from '../testData/user';
+import {  createUser, deleteUser, login} from '../testData/user';
 import { randomUUID } from 'crypto'
 
 
@@ -58,8 +58,8 @@ test.describe("Unauthorized User", () => {
         const body = await resp.json()
         testInfo['id'] = body.id
         const unique = randomUUID()
-        await createNewUser(unique, unique)
-        const token = await newLogin(unique, unique)
+        await createUser(unique, unique)
+        const token = await login(unique, unique)
         testInfo['token'] = token
 
     })

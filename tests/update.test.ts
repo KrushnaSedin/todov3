@@ -2,7 +2,7 @@ import { expect, request } from '@playwright/test'
 import { test } from '../../todov3/fixtures/user.fixture'
 import { BASE_URL, TODO_RESOURCE } from '../config'
 import { randomUUID } from 'crypto'
-import { createNewUser, createUser, deleteUser, newLogin } from '../testData/user';
+import { createUser, deleteUser, login } from '../testData/user';
 
 test.describe("Patch request ", () => {
 
@@ -92,8 +92,8 @@ test.describe("Unauthorized User Patch request", () => {
         const body = await resp.json()
         testInfo['id'] = body.id
         const unique = randomUUID()
-        await createNewUser(unique, unique)
-        const token = await newLogin(unique, unique)
+        await createUser(unique, unique)
+        const token = await login(unique, unique)
         testInfo['token'] = token
 
     })
@@ -192,8 +192,8 @@ test.describe("Unauthorized User Put request", () => {
         const body = await resp.json()
         testInfo['id'] = body.id
         const unique = randomUUID()
-        await createNewUser(unique, unique)
-        const token = await newLogin(unique, unique)
+        await createUser(unique, unique)
+        const token = await login(unique, unique)
         testInfo['token'] = token
 
     })

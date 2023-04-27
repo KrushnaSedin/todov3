@@ -1,6 +1,6 @@
-import { deleteUser, login } from "./user"
+import { deleteUser,loginWithConfigUser } from "./user"
 
 (async()=>{
-    const token=await login()
+    const token=await loginWithConfigUser()
     await deleteUser(token)
 })()
