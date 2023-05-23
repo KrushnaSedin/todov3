@@ -1,0 +1,18 @@
+{
+  "name": "todov3",
+  "version": "1.0.0",
+  "description": "\"# todov3\"",
+  "main": "index.js",
+  "scripts": {
+    "pretest": "ts-node testData/create.ts",
+    "test": "npx playwright test",
+    "posttest": "ts-node testData/delete.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.32.3",
+    "ts-node": "^10.9.1"
+  }
+}
